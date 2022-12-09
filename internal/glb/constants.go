@@ -7,17 +7,18 @@ import (
 )
 
 const (
-	APP_NAME                = "Chipmunk2d Demo"
-	APP_VERSION             = "0.1"
-	CONF_FILE_NAME          = ".go-sdl2-cp-examples.properties"
-	FONT_FILE_NAME          = "OpenSans-Regular.ttf"
-	ICON_FILE_NAME          = "go-sdl2-cp-examples.png"
-	FONT_SIZE               = 16
-	SCREEN_WIDTH            = 640
-	SCREEN_HEIGHT           = 480
-	SCREEN_WIDTH_HALF       = SCREEN_WIDTH / 2
-	SCREEN_HEIGHT_HALF      = SCREEN_HEIGHT / 2
-	GRABBABLE_MASK_BIT uint = 1 << 31
+	APP_NAME                   = "Chipmunk2d Demo"
+	APP_VERSION                = "0.1"
+	CONF_FILE_NAME             = ".go-sdl2-cp-examples.properties"
+	FONT_FILE_NAME             = "OpenSans-Regular.ttf"
+	ICON_FILE_NAME             = "go-sdl2-cp-examples.png"
+	FONT_SIZE                  = 16
+	SCREEN_WIDTH               = 640
+	SCREEN_HEIGHT              = 480
+	SCREEN_WIDTH_HALF          = SCREEN_WIDTH / 2
+	SCREEN_HEIGHT_HALF         = SCREEN_HEIGHT / 2
+	GRABBABLE_MASK_BIT uint    = 1 << 31
+	TICK               float64 = 1.0 / 60.0
 
 	WINDOW_XPOS_KEY   = "WINDOW_XPOS_KEY"
 	WINDOW_YPOS_KEY   = "WINDOW_YPOS_KEY"

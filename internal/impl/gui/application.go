@@ -18,26 +18,26 @@ func NewApplication() *ApplicationImpl {
 }
 
 func (app *ApplicationImpl) Start() {
-	ctx.Device = dev.NewDevice()
-	ctx.Config = NewConfig()
-	ctx.Window = NewWindow()
+	ctx.DeviceIns = dev.NewDevice()
+	ctx.ConfigIns = NewConfig()
+	ctx.WindowIns = NewWindow()
 
-	ctx.Loop = loop.NewLoop()
-	ctx.EventLoop = loop.NewEventLoop()
-	ctx.PhysicsLoop = loop.NewPhysicsLoop()
-	ctx.RenderLoop = loop.NewRenderLoop()
+	ctx.LoopIns = loop.NewLoop()
+	ctx.EventLoopIns = loop.NewEventLoop()
+	ctx.PhysicsLoopIns = loop.NewPhysicsLoop()
+	ctx.RenderLoopIns = loop.NewRenderLoop()
 
-	ctx.CurrentScene = rnd.NewScene()
+	ctx.SceneIns = rnd.NewScene()
 
-	ctx.Font, _ = ttf.OpenFontRW(resources.GetResource(glb.FONT_FILE_NAME), 1, glb.FONT_SIZE)
+	ctx.FontIns, _ = ttf.OpenFontRW(resources.GetResource(glb.FONT_FILE_NAME), 1, glb.FONT_SIZE)
 
-	ctx.Loop.Start()
+	ctx.LoopIns.Start()
 
 	//graceful shutdown :) we let the loop finish all rendering/processing
 	app.Stop()
 }
 
 func (app *ApplicationImpl) Stop() {
-	ctx.Font.Close()
-	ctx.Device.Stop()
+	ctx.FontIns.Close()
+	ctx.DeviceIns.Stop()
 }

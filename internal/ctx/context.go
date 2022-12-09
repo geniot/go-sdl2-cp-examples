@@ -8,19 +8,19 @@ import (
 )
 
 var (
-	Application api.IApplication
-	Window      api.IWindow
-	Device      api.IDevice
-	Config      api.IConfig
+	ApplicationIns api.IApplication
+	WindowIns      api.IWindow
+	DeviceIns      api.IDevice
+	ConfigIns      api.IConfig
 
-	Loop        api.IStartable
-	EventLoop   api.IRunnable
-	PhysicsLoop api.IRunnable
-	RenderLoop  api.IRunnable
+	LoopIns        api.IStartable
+	EventLoopIns   api.IRunnable
+	PhysicsLoopIns api.IRunnable
+	RenderLoopIns  api.IRunnable
 
-	CurrentScene api.IRenderable
+	SceneIns api.IScene
 
-	Renderer         *sdl.Renderer
-	Font             *ttf.Font
-	PressedKeysCodes mapset.Set[sdl.Keycode] = mapset.NewSet[sdl.Keycode]()
+	RendererIns            *sdl.Renderer
+	FontIns                *ttf.Font
+	PressedKeysCodesSetIns mapset.Set[sdl.Keycode] = mapset.NewSet[sdl.Keycode]()
 )

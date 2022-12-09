@@ -5,23 +5,23 @@ import (
 	"github.com/tevino/abool/v2"
 )
 
-type Loop struct {
+type LoopImpl struct {
 	isRunning *abool.AtomicBool
 }
 
-func NewLoop() *Loop {
-	return &Loop{abool.New()}
+func NewLoop() *LoopImpl {
+	return &LoopImpl{abool.New()}
 }
 
-func (loop Loop) Start() {
+func (loop LoopImpl) Start() {
 	loop.isRunning.Set()
 	for loop.isRunning.IsSet() {
-		ctx.EventLoop.Run()
-		ctx.PhysicsLoop.Run()
-		ctx.RenderLoop.Run()
+		ctx.EventLoopIns.Run()
+		ctx.PhysicsLoopIns.Run()
+		ctx.RenderLoopIns.Run()
 	}
 }
 
-func (loop Loop) Stop() {
+func (loop LoopImpl) Stop() {
 	loop.isRunning.UnSet()
 }

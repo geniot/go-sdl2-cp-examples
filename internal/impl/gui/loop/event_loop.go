@@ -5,14 +5,14 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-type EventLoop struct {
+type EventLoopImpl struct {
 }
 
-func NewEventLoop() *EventLoop {
-	return &EventLoop{}
+func NewEventLoop() *EventLoopImpl {
+	return &EventLoopImpl{}
 }
 
-func (eventLoop EventLoop) Run() {
+func (eventLoop EventLoopImpl) Run() {
 	for event := sdl.PollEvent(); event != nil; event = sdl.PollEvent() {
 		switch t := event.(type) {
 
@@ -21,22 +21,22 @@ func (eventLoop EventLoop) Run() {
 				break
 			}
 			if t.State == sdl.PRESSED {
-				ctx.PressedKeysCodes.Add(t.Keysym.Sym)
+				ctx.PressedKeysCodesSetIns.Add(t.Keysym.Sym)
 			} else { // if t.State == sdl.RELEASED {
-				ctx.PressedKeysCodes.Remove(t.Keysym.Sym)
+				ctx.PressedKeysCodesSetIns.Remove(t.Keysym.Sym)
 			}
 			break
 
 		case *sdl.WindowEvent:
 			if t.Event == sdl.WINDOWEVENT_CLOSE {
-				ctx.Window.SaveWindowState()
+				ctx.WindowIns.SaveWindowState()
 			}
 			break
 
 		case *sdl.QuitEvent:
-			ctx.Loop.Stop()
+			ctx.LoopIns.Stop()
 			break
 		}
 	}
-	ctx.Device.ProcessKeyActions()
+	ctx.DeviceIns.ProcessKeyActions()
 }

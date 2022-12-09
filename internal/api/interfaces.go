@@ -1,5 +1,7 @@
 package api
 
+import "github.com/jakecoffman/cp"
+
 type IApplication interface {
 	Start()
 	Stop()
@@ -7,6 +9,11 @@ type IApplication interface {
 
 type IWindow interface {
 	SaveWindowState()
+}
+
+type IScene interface {
+	Render()
+	GetSpace() *cp.Space
 }
 
 type IConfig interface {

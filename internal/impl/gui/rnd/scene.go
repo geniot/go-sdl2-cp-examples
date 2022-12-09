@@ -9,7 +9,11 @@ import (
 
 type Scene struct {
 	renderables *list.List
-	space       *cp.Space
+	Space       *cp.Space
+}
+
+func (scene *Scene) GetSpace() *cp.Space {
+	return scene.Space
 }
 
 func NewScene() *Scene {
@@ -28,9 +32,7 @@ func NewScene() *Scene {
 		shape := space.AddShape(cp.NewSegment(space.StaticBody, walls[i], walls[i+1], 0))
 		shape.SetElasticity(1)
 		shape.SetFriction(1)
-		shape.SetFilter(cp.ShapeFilter{
-			cp.NO_GROUP, ^GRABBABLE_MASK_BIT, ^GRABBABLE_MASK_BIT,
-		})
+		shape.SetFilter(cp.ShapeFilter{cp.NO_GROUP, ^GRABBABLE_MASK_BIT, ^GRABBABLE_MASK_BIT})
 	}
 
 	l := list.New()

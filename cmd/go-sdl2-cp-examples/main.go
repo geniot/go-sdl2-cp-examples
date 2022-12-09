@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	ctx.Application = gui.NewApplication()
-	ctx.Application.Start()
+	ctx.ApplicationIns = gui.NewApplication()
+	ctx.ApplicationIns.Start()
 }
