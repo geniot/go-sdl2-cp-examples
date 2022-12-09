@@ -5,17 +5,6 @@ import (
 	"github.com/veandco/go-sdl2/sdl"
 )
 
-func renderImageElement(imageElements []ImageElement, index int) {
-	ctx.Renderer.Copy(
-		imageElements[index].texture,
-		nil,
-		&sdl.Rect{
-			imageElements[index].offsetX,
-			imageElements[index].offsetY,
-			imageElements[index].width,
-			imageElements[index].height})
-}
-
 func getTextWidth(text string) int32 {
 	width, _, _ := ctx.Font.SizeUTF8(text)
 	return int32(width)

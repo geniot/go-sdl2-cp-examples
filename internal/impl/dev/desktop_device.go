@@ -26,14 +26,14 @@ func (desktopDevice DesktopDeviceImpl) ProcessKeyActions() {
 func (desktopDevice DesktopDeviceImpl) GetWindowPosAndSize() (int32, int32, int32, int32) {
 	return int32(ctx.Config.Get(glb.WINDOW_XPOS_KEY)),
 		int32(ctx.Config.Get(glb.WINDOW_YPOS_KEY)),
-		//320, 240
-		int32(ctx.Config.Get(glb.WINDOW_WIDTH_KEY)),
-		int32(ctx.Config.Get(glb.WINDOW_HEIGHT_KEY))
+		glb.SCREEN_WIDTH, glb.SCREEN_HEIGHT
+	//int32(ctx.Config.Get(glb.WINDOW_WIDTH_KEY)),
+	//int32(ctx.Config.Get(glb.WINDOW_HEIGHT_KEY))
 }
 
 func (desktopDevice DesktopDeviceImpl) GetWindowState() uint32 {
-	return ctx.Config.Get(glb.WINDOW_STATE_KEY)
-	//return sdl.WINDOW_SHOWN
+	//return ctx.Config.Get(glb.WINDOW_STATE_KEY)
+	return sdl.WINDOW_SHOWN
 }
 
 func NewDesktopDevice() DesktopDeviceImpl {
