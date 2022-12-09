@@ -3,6 +3,7 @@ package rnd
 import (
 	"container/list"
 	"geniot.com/geniot/go-sdl2-cp-examples/internal/api"
+	"geniot.com/geniot/go-sdl2-cp-examples/internal/ctx"
 	. "geniot.com/geniot/go-sdl2-cp-examples/internal/glb"
 	"github.com/jakecoffman/cp"
 )
@@ -18,15 +19,21 @@ func (scene *Scene) GetSpace() *cp.Space {
 
 func NewScene() *Scene {
 	space := cp.NewSpace()
-	//space.Iterations = 30
+	space.Iterations = 30
 	space.SetGravity(cp.Vector{0, 0})
 	space.SleepTimeThreshold = 0.5
 
+	_, _, sW, sH := ctx.DeviceIns.GetWindowPosAndSize()
+	screenWidth := float64(sW)
+	screenHeight := float64(sH)
+	screenWidthHalf := float64(screenWidth / 2)
+	screenHeightHalf := float64(screenHeight / 2)
+
 	walls := []cp.Vector{
-		{-SCREEN_WIDTH_HALF, -SCREEN_HEIGHT_HALF}, {-SCREEN_WIDTH_HALF, SCREEN_HEIGHT_HALF},
-		{SCREEN_WIDTH_HALF, -SCREEN_HEIGHT_HALF}, {SCREEN_WIDTH_HALF, SCREEN_HEIGHT_HALF},
-		{-SCREEN_WIDTH_HALF, -SCREEN_HEIGHT_HALF}, {SCREEN_WIDTH_HALF, -SCREEN_HEIGHT_HALF},
-		{-SCREEN_WIDTH_HALF, SCREEN_HEIGHT_HALF}, {SCREEN_WIDTH_HALF, SCREEN_HEIGHT_HALF},
+		{-screenWidthHalf, -screenHeightHalf}, {-screenWidthHalf, screenHeightHalf},
+		{screenWidthHalf, -screenHeightHalf}, {screenWidthHalf, screenHeightHalf},
+		{-screenWidthHalf, -screenHeightHalf}, {screenWidthHalf, -screenHeightHalf},
+		{-screenWidthHalf, screenHeightHalf}, {screenWidthHalf, screenHeightHalf},
 	}
 	for i := 0; i < len(walls)-1; i += 2 {
 		shape := space.AddShape(cp.NewSegment(space.StaticBody, walls[i], walls[i+1], 0))
@@ -36,7 +43,9 @@ func NewScene() *Scene {
 	}
 
 	l := list.New()
-	l.PushBack(NewBall(space))
+	for i := 0; i < 5; i++ {
+		l.PushBack(NewBall(space))
+	}
 	l.PushBack(NewFpsCounter())
 
 	return &Scene{l, space}

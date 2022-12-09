@@ -13,10 +13,6 @@ const (
 	FONT_FILE_NAME             = "OpenSans-Regular.ttf"
 	ICON_FILE_NAME             = "go-sdl2-cp-examples.png"
 	FONT_SIZE                  = 16
-	SCREEN_WIDTH               = 640
-	SCREEN_HEIGHT              = 480
-	SCREEN_WIDTH_HALF          = SCREEN_WIDTH / 2
-	SCREEN_HEIGHT_HALF         = SCREEN_HEIGHT / 2
 	GRABBABLE_MASK_BIT uint    = 1 << 31
 	TICK               float64 = 1.0 / 60.0
 
@@ -66,6 +62,9 @@ var (
 	COLOR_YELLOW = sdl.Color{R: 255, G: 255, B: 0, A: 255}
 	COLOR_BLUE   = sdl.Color{R: 0, G: 255, B: 255, A: 255}
 	COLOR_BLACK  = sdl.Color{R: 0, G: 0, B: 0, A: 255}
+
+	LIGHT_GRAY       = [4]uint8{211, 211, 211, 255}
+	COLOR_LIGHT_GRAY = sdl.Color{LIGHT_GRAY[0], LIGHT_GRAY[1], LIGHT_GRAY[2], LIGHT_GRAY[3]}
 )
 
 func If[T any](cond bool, vTrue, vFalse T) T {

@@ -26,7 +26,7 @@ func (desktopDevice DesktopDeviceImpl) ProcessKeyActions() {
 func (desktopDevice DesktopDeviceImpl) GetWindowPosAndSize() (int32, int32, int32, int32) {
 	return int32(ctx.ConfigIns.Get(glb.WINDOW_XPOS_KEY)),
 		int32(ctx.ConfigIns.Get(glb.WINDOW_YPOS_KEY)),
-		glb.SCREEN_WIDTH, glb.SCREEN_HEIGHT
+		640, 480
 	//int32(ctx.ConfigIns.Get(glb.WINDOW_WIDTH_KEY)),
 	//int32(ctx.ConfigIns.Get(glb.WINDOW_HEIGHT_KEY))
 }
