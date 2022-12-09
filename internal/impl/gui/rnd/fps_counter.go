@@ -7,19 +7,19 @@ import (
 )
 
 type FpsCounter struct {
-	startTicks    uint64
-	frameCount    uint64
-	currentSecond uint64
-	currentFPS    uint64
+	startTicks    uint32
+	frameCount    uint32
+	currentSecond uint32
+	currentFPS    uint32
 }
 
 func NewFpsCounter() *FpsCounter {
-	return &FpsCounter{sdl.GetTicks64(), 0, sdl.GetTicks64() / 1000, 0}
+	return &FpsCounter{sdl.GetTicks(), 0, sdl.GetTicks() / 1000, 0}
 }
 
 func (fpsCounter *FpsCounter) Render() {
 	fpsCounter.frameCount += 1
-	currentTicks := sdl.GetTicks64()
+	currentTicks := sdl.GetTicks()
 	if currentTicks == 0 {
 		return
 	}
