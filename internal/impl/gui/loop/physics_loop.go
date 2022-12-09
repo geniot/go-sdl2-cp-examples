@@ -17,7 +17,7 @@ func NewPhysicsLoop() *PhysicsLoopImpl {
 }
 
 func (physicsLoop *PhysicsLoopImpl) Run() {
-	t := float64(sdl.GetTicks64()) / 1000
+	t := float64(sdl.GetTicks()) / 1000
 	dt := t - physicsLoop.lastTime
 	if dt > 0.2 {
 		dt = 0.2
