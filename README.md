@@ -1,8 +1,4 @@
-Chipmunk2d examples ported to Go are rendered with GL:
-
-https://github.com/jakecoffman/cp-examples
-
-This is a port of these examples with SDL2 rendering. 
+Chipmunk2d examples written in Go and rendered with SDL2. 
 
 See:
 
