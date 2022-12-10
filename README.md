@@ -1,5 +1,9 @@
 Chipmunk2d examples written in Go and rendered with SDL2. 
 
+Controls:
+
+**L1+Start** - Exit _(same as in PG2 Test app)_
+
 See:
 
 1. https://github.com/veandco/go-sdl2
